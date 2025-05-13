@@ -33,7 +33,7 @@ The objective is to create a new Fabric workspace. By the end,
 participants will confidently set up, manage, and collaborate within
 their own Fabric workspaces.
 
-### **Task-2: Create a New Fabric Workspace**
+### **Task 1: Create a New Fabric Workspace**
 
 You can use an existing workspace or create a new Fabric workspace.  In
 workspaces, you create collections of items such as lakehouses,
@@ -51,7 +51,7 @@ To create a workspace:
 
     |   |   |
     |---|---|
-    |Name|	+++ Supply Chain Analytics WorkspaceXX+++(XX can be a unique number)|
+    |Name|	+++Supply Chain Analytics WorkspaceXX+++(XX can be a unique number)|
     |Advanced	|Under License mode, select Trial|
 
 
@@ -115,7 +115,7 @@ data for the simulated data for supply chain analysis.
         created product data from **SalesLT.Product**.
 
         SQL
-        ```
+        
         /* Create the Tutorial Schema called SupplyChain for all tutorial objects */
         CREATE SCHEMA SupplyChain;
         GO
@@ -142,7 +142,7 @@ data for the simulated data for supply chain analysis.
             ABS(CHECKSUM(NEWID())) % 100 + 1 AS QuantityOnHand
         FROM [SalesLT].[Product] AS p;
         GO
-        ```
+        
 
       ![](./media/image12.png)
      
