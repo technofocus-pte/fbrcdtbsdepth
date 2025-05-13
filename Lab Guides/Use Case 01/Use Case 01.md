@@ -1,5 +1,4 @@
-**Use Case 01 – Build SQL database in Microsoft Fabric to query, report,
-and share the data**
+# Use case 01 – Build SQL database in Microsoft Fabric to query, report, and share the data
 
 **Introduction**
 
@@ -242,7 +241,7 @@ Follow these steps to enable SQL database for your tenant.
     product_name VARCHAR(256), 
     create_date DATETIME2 
     )
-    ``
+    ```
    ![](./media/image28.png)
  
    ![](./media/image29.png)
