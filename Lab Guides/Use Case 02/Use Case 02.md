@@ -1,12 +1,31 @@
-# Use Case 2 – Build a Supply Chain Disruption Response App using Fabric Databases
+# Use Case 02 – Build a Supply Chain Disruption Response App using SQL database in Microsoft Fabric
 
-By the end of this tutorial, you'll feel confident navigating Microsoft
-Fabric's SQL features. You'll learn how to create and explore a
-Lakehouse, understand the default datasets, and use the SQL endpoint to
-perform basic SQL queries. The tutorial guides you through exploring
-data with T-SQL, filtering records, performing aggregations, and
-understanding schema structures—all within Microsoft Fabric's unified
-analytics platform.
+**Introduction**
+
+In today's dynamic global economy, supply chain disruptions can
+significantly impact business operations. To address these challenges,
+Microsoft Fabric offers a powerful platform for building responsive,
+data-driven applications. This tutorial demonstrates how to leverage
+Microsoft Fabric's SQL capabilities to build a Supply Chain Disruption
+Response App. Through a series of guided exercises, users will learn to
+create and manage SQL databases, ingest and analyze data, and visualize
+insights using integrated tools like Power BI and Fabric Notebooks.
+
+**Objective**
+
+- Create and configure a SQL database within Microsoft Fabric.
+
+- Ingest and manipulate supply chain data using T-SQL and data
+  pipelines.
+
+- Perform advanced data analysis and create views for reporting and
+  visualization.
+
+- Utilize the SQL analytics endpoint and GraphQL API to build
+  interactive applications.
+
+- Develop and share insightful Power BI reports based on real-time
+  supply chain data.
 
 ## ­Exercise 1 – Create a New Fabric Workspace
 
@@ -14,195 +33,130 @@ The objective is to create a new Fabric workspace. By the end,
 participants will confidently set up, manage, and collaborate within
 their own Fabric workspaces.
 
+### **Task-2: Create a New Fabric Workspace**
+
+You can use an existing workspace or create a new Fabric workspace.  In
+workspaces, you create collections of items such as lakehouses,
+warehouses, and reports. You must be a member of the Admin or Member
+roles for the workspace to create a SQL database.
+
 To create a workspace:
 
-1.  From left pane, select **Workspaces** \> **New workspace**.
+1.  In the **Fabric** home page, select **+New workspace**.
 
-![](./media/image1.png)
+    ![](./media/image1.png)
 
-2.  The **Create a workspace** pane opens.
+2.  In the **Create a workspace tab**, enter the following details and
+    click on the **Apply** button.
 
-    - Give the workspace a unique name (mandatory).
+    |   |   |
+    |---|---|
+    |Name|	+++ Supply Chain Analytics WorkspaceXX+++(XX can be a unique number)|
+    |Advanced	|Under License mode, select Trial|
 
-    &nbsp;
 
-    - Provide a description of the workspace (optional).
-
-    &nbsp;
-
-    - Assign the workspace to a domain (optional).
-
-> ![](./media/image2.png)If you are a domain contributor for the
-> workspace, you can associate the workspace to a domain, or you can
-> change an existing association.
-
-3.  When done, either continue to the advanced settings, or
-    select **Apply**.
+     ![](./media/image2.png)
+ 
+    ![](./media/image3.png)
+    ![](./media/image4.png)
 
 ## Exercise 2 – Create a SQL Database in Microsoft Fabric 
 
-1.  Ensure you are in the Workspace you created earlier by selecting
-    the **Workspaces** icon in the navigation bar, and then selecting
-    the Workspace you created in the last step.
+1.  In the Fabric Portal, click on **+ New Item**, search for **SQL
+    databases**, and select **SQL database (preview) tile.**
 
-2.  ![](./media/image3.png)Create a Fabric SQL database by selecting
-    the **+ New item**.
+     ![](./media/image5.png)
 
-3.  ![](./media/image4.png)In the **New Item | All Items** panel, scroll
-    to the **Store Data** area and select **SQL database (preview)**.
+2.  Provide a name for the **New Database** as
+    **+++supply_chain_analytics_database+++.** Select **Create** button.
 
-4.  Fill in the **Name** field with the
-    text ***supply_chain_analytics_database*** and select
-    the **Create** button. Database creation should take less than a
-    minute.
+    ![](./media/image6.png)
 
-> ![](./media/image5.png)
+    ![](./media/image7.png)
 
 ## Exercise 3 – Ingest sample data and create objects and data 
 
 ### **Task-1: Open the Query Editor in the Fabric Portal**
 
-1.  ![A screenshot of a computer Description automatically
-    generated](./media/image6.png)The Query Editor will be displayed
-    that is loaded with the schema.
+1.  Once the new database is created, open the database's home page.
+    Select **Sample Data**.
 
-2.  Select the **Sample data **button. This takes a few moments to
-    populate your tutorial database with the SalesLT sample data.
+    ![](./media/image8.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image7.png)
-
-3.  Check the Notifications area to ensure the import is complete before
+2.  Check the Notifications area to ensure the import is complete before
     you proceed.
 
-![A black text on a white background Description automatically
-generated](./media/image8.png)
+     ![](./media/image9.png)
 
-4.  Notifications show you when the import of the sample data is
+3.  Notifications show you when the import of the sample data is
     complete. Your SQL database in Fabric now contains
     the SalesLT schema and associated tables.
 
-![A screenshot of a computer Description automatically
-generated](./media/image9.png)
+     ![](./media/image10.png)
 
-### **Task-2: Use the SQL database in the SQL Editor (Copilot)**
-
-1.  In your database view, start by selecting **New Query** from the
-    icon bar. This brings up a query editor.
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image10.png)Type a T-SQL comment at the top of the
-> query, such as -- Create a query that shows the total number of
-> customers and press **Enter**. You get a result similar to this one:
-
-2.  ![A screenshot of a computer Description automatically
-    generated](./media/image11.png)Pressing the "Tab" key implements the
-    suggested code:
-
-3.  ![A screenshot of a computer Description automatically
-    generated](./media/image12.png)Select **Explain query** in the icon
-    bar of the Query editor to insert comments in your code to explain
-    each major step:
-
-In a production environment, you might have data that is already in a
-normalized format for day-to-day application operations, which you have
-simulated here with the *SalesLT* data. As you create a query, it's
-saved automatically in the **Queries** item in the **Explorer** pane.
-
-You should see your query as "SQL query 1". By default, the system
-numbers the queries like "SQL query 1", but you can select the ellipses
-next to the query name to duplicate, rename or delete the query.
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image13.png)
-
-### **Task-3: Insert data using Transact-SQL**
+### **Task-2: Insert data using Transact-SQL**
 
 The following steps use a T-SQL script to create a schema, table, and
 data for the simulated data for supply chain analysis.
 
-1.  ![](./media/image14.png)Select the **New Query** button in the
-    toolbar of the SQL database to create a new query.
+1.  Select the **New Query** button in the toolbar of the SQL database
+    to create a new query.
+
+    ![](./media/image11.png)
 
 2.  Paste the following script in the Query area and select **Run** to
-    execute it. The following T-SQL script:
+    execute it. The following T-SQL script
 
-    1.  Creates a schema named SupplyChain.
+    a.  Creates a schema named **SupplyChain.**
 
-    &nbsp;
+    b.  Creates a table named **SupplyChain.Warehouse**.
 
-    1.  Creates a table named SupplyChain.Warehouse.
+    c.  Populates the **SupplyChain.Warehouse** table with some randomly
+        created product data from **SalesLT.Product**.
 
-    &nbsp;
+        SQL
+        ```
+        /* Create the Tutorial Schema called SupplyChain for all tutorial objects */
+        CREATE SCHEMA SupplyChain;
+        GO
+        
+        /* Create a Warehouse table in the Tutorial Schema
+        NOTE: This table is just a set of INT's as Keys,  
+        tertiary tables will be added later
+        */
+        
+        CREATE TABLE SupplyChain.Warehouse (
+          ProductID INT PRIMARY KEY  -- ProductID to link to Products and Sales tables
+        , ComponentID INT -- Component Identifier, for this tutorial we assume one per product, would normalize into more tables
+        , SupplierID INT -- Supplier Identifier, would normalize into more tables
+        , SupplierLocationID INT -- Supplier Location Identifier, would normalize into more tables
+        , QuantityOnHand INT); -- Current amount of components in warehouse
+        GO
+        
+        /* Insert data from the Products table into the Warehouse table. Generate other data for this tutorial */
+        INSERT INTO SupplyChain.Warehouse (ProductID, ComponentID, SupplierID, SupplierLocationID, QuantityOnHand)
+        SELECT p.ProductID,
+            ABS(CHECKSUM(NEWID())) % 10 + 1 AS ComponentID,
+            ABS(CHECKSUM(NEWID())) % 10 + 1 AS SupplierID,
+            ABS(CHECKSUM(NEWID())) % 10 + 1 AS SupplierLocationID,
+            ABS(CHECKSUM(NEWID())) % 100 + 1 AS QuantityOnHand
+        FROM [SalesLT].[Product] AS p;
+        GO
+        ```
 
-    1.  Populates the SupplyChain.Warehouse table with some randomly
-        created product data from SalesLT.Product.
+      ![](./media/image12.png)
+     
+      ![](./media/image13.png)
 
-**SQL**
+    Your SQL database in Fabric database now includes Warehouse information.
+    You'll use this data in a later step in this tutorial.
 
-/\* Create the Tutorial Schema called SupplyChain for all tutorial
-objects \*/
+3.  You can select these tables in the **Explorer** pane, and the table
+    data is displayed – no need to write a query to see it.
 
-CREATE SCHEMA SupplyChain;
+      ![](./media/image14.png)
 
-GO
-
-/\* Create a Warehouse table in the Tutorial Schema
-
-NOTE: This table is just a set of INT's as Keys,
-
-tertiary tables will be added later
-
-\*/
-
-CREATE TABLE SupplyChain.Warehouse (
-
-ProductID INT PRIMARY KEY -- ProductID to link to Products and Sales
-tables
-
-, ComponentID INT -- Component Identifier, for this tutorial we assume
-one per product, would normalize into more tables
-
-, SupplierID INT -- Supplier Identifier, would normalize into more
-tables
-
-, SupplierLocationID INT -- Supplier Location Identifier, would
-normalize into more tables
-
-, QuantityOnHand INT); -- Current amount of components in warehouse
-
-GO
-
-/\* Insert data from the Products table into the Warehouse table.
-Generate other data for this tutorial \*/
-
-INSERT INTO SupplyChain.Warehouse (ProductID, ComponentID, SupplierID,
-SupplierLocationID, QuantityOnHand)
-
-SELECT p.ProductID,
-
-ABS(CHECKSUM(NEWID())) % 10 + 1 AS ComponentID,
-
-ABS(CHECKSUM(NEWID())) % 10 + 1 AS SupplierID,
-
-ABS(CHECKSUM(NEWID())) % 10 + 1 AS SupplierLocationID,
-
-ABS(CHECKSUM(NEWID())) % 100 + 1 AS QuantityOnHand
-
-FROM \[SalesLT\].\[Product\] AS p;
-
-GO
-
-![](./media/image15.png)
-
-> Your SQL database in Fabric database now includes Warehouse
-> information. You'll use this data in a later step in this tutorial.
-
-3.  ![](./media/image16.png)You can select these tables in
-    the **Explorer** pane, and the table data is displayed – no need to
-    write a query to see it.
-
-### **Task-4: Insert data using a Microsoft Fabric Pipeline**
+### **Task-3: Insert data using a Microsoft Fabric Pipeline**
 
 Another way you can import data into and export data out of your SQL
 database in Fabric is to use a Microsoft Fabric Data Pipeline. Data
@@ -221,72 +175,65 @@ you'll import their data and show the names of these suppliers using a
 view that you'll create in another step in this tutorial.
 
 To get started, open the SQL database view of the sample database in the
-Fabric portal,
+Fabric portal.
 
-1.  ![](./media/image17.png)Select the **Get Data** button from the menu
-    bar and Select **New Dataflow Gen2**.
+1.  Select the **Get Data** button from the menu bar and Select **New
+    Dataflow Gen2**.
+
+    ![](./media/image15.png)
+ 
+    ![](./media/image16.png)
 
 2.  In the Power Query view, select the **Get Data** button. This starts
     a guided process rather than jumping to a particular data area.
 
-![](./media/image18.png)
+    ![](./media/image17.png)
 
-3.  ![](./media/image19.png)In the search box of the **Choose Data
-    Source**, view type **odata** and Select **OData** from the **New
+3.  In the search box of the **Choose Data Source**, view
+    type **+++odata+++** and Select **OData** from the **New
     sources** results.
 
-4.  ![](./media/image20.png)In the URL text box of the **Connect to data
-    source** view, type the
-    text: *https://services.odata.org/v4/northwind/northwind.svc/* for
-    the Open Data feed of the Northwind sample database. Select
+    ![](./media/image18.png)
+
+4.  In the URL text box of the **Connect to data source** view, type the
+    text: **+++https://services.odata.org/v4/northwind/northwind.svc/+++** for
+    the Open Data feed of the **Northwind sample** database. Select
     the **Next** button to continue.
 
-5.  ![](./media/image21.png)Scroll down to the **Suppliers** table from
-    the OData feed and select the checkbox next to it. Then select
-    the **Create** button.
+     ![](./media/image19.png)
 
-6.  Select the **+** plus-symbol next to the **Data
-    Destination** section of the **Query Settings**, and select **SQL
-    database** from the list.
+5.  In the **Data Destination** section, make sure to check that the
+    **SQL database** is connected.
+    ![](./media/image20.png)
 
-![](./media/image22.png)
+6.  Select the **Publish** button to start the data transfer.
 
-7.  On the **Connect to data destination** page, ensure
-    the **Authentication kind** is set to **Organizational account**.
-    Select **Sign in** and enter your Microsoft Entra ID credentials to
-    the database.
+     ![](./media/image21.png)
 
-> ![](./media/image23.png)Once you're successfully connected, select
-> the **Next** button.
+7.  You're returned to your Workspace view, where you can find the new
+    Dataflow item.
 
-8.  Select the Workspace name you created in the first step of this
-    tutorial in the **Choose destination target** section.
+    ![](./media/image22.png)
+    ![](./media/image23.png)
 
-> Select your database that shows underneath it. Ensure that the **New
-> table** radio button is selected and leave the name of the table
-> as **Suppliers** and select the **Next** button.
->
-> ![](./media/image24.png)
+8.  Select **supply_chain_analytics_database** SQL databse
 
-9.  ![](./media/image25.png)Leave the **Use automatic settings** slider
-    set on the **Choose destination settings** view and select
-    the **Save settings** button.
+      ![](./media/image24.png)
 
-10. Select the **Publish** button to start the data transfer.
+9.  Refresh the database by clicking on the three
+    dots **(...)** beside **supply_chain_analytics_database ,** then
+    navigate and click on **Refresh**.
 
-![](./media/image26.png)
+     ![](./media/image25.png)
 
-11. ![](./media/image27.png)You're returned to your Workspace view,
-    where you can find the new Dataflow item.
+10. In the **Explorer**, expand the **dbo** schema to display the new
+    table named **Suppliers**
 
-12. ![](./media/image28.png)When the **Refreshed** column shows the
-    current date and time, you can select your database name in
-    the **Explorer** then expand the dbo schema to show the new table.
-    (You might have to select the **Refresh** icon in the toolbar.)
+      ![](./media/image26.png)
 
-The data is now ingested into your database. You can now create a query
-that combines the data from the Suppliers table using this tertiary
-table.
+11. The data is now ingested into your database. You can now create a
+    query that combines the data from the Suppliers table using this
+    tertiary table. You'll do this later in our tutorial.
 
 ## Exercise 4 – Query the database 
 
@@ -294,65 +241,41 @@ table.
 
 You can type Transact-SQL (T-SQL) statements in a query window.
 
-1.  ![](./media/image29.png)In ribbon of the database in the Fabric
-    portal, select the **New Query** button.
+1.  In ribbon of the database in the Fabric portal, select the **New
+    Query** button.
+
+      ![](./media/image27.png)
 
 2.  Copy the following T-SQL script and paste it in the query window.
-    This sample script performs a simple **TOP 10** query, and creates a
-    view based on a simple analytical T-SQL query. The new
-    view **SupplyChain.vProductsbySuppliers** will be used later in this
-    tutorial.
+    This sample script performs a simple TOP 10 query, and creates a
+    view based on a simple analytical T-SQL query. Select
+    the **Run** button in the toolbar to execute the T-SQL query.
+    ```
+    -- Show the top 10 selling items 
+    SELECT TOP 10
+        [P].[ProductID],
+        [P].[Name],
+        SUM([SOD].[OrderQty]) AS TotalQuantitySold
+    FROM [SalesLT].[Product] AS P
+    INNER JOIN [SalesLT].[SalesOrderDetail] AS SOD ON [P].[ProductID] = [SOD].[ProductID]
+    GROUP BY [P].[ProductID], [P].[Name]
+    ORDER BY TotalQuantitySold DESC;
+    GO
+    
+     /* Create View that will be used in the SQL GraphQL Endpoint */
+    CREATE VIEW SupplyChain.vProductsbySuppliers AS
+    SELECT COUNT(a.ProductID) AS ProductCount
+    , a.SupplierLocationID
+    , b.CompanyName
+    FROM SupplyChain.Warehouse AS a
+    INNER JOIN dbo.Suppliers AS b ON a.SupplierID = b.SupplierID
+    GROUP BY a.SupplierLocationID, b.CompanyName;
+    GO
+    ```
+    ![](./media/image28.png)
+ 
+    ![](./media/image29.png)
 
-> Select the **Run** button in the toolbar to execute the T-SQL query.
-
-**SQL**
-
--- Show the top 10 selling items
-
-SELECT TOP 10
-
-\[P\].\[ProductID\],
-
-\[P\].\[Name\],
-
-SUM(\[SOD\].\[OrderQty\]) AS TotalQuantitySold
-
-FROM \[SalesLT\].\[Product\] AS P
-
-INNER JOIN \[SalesLT\].\[SalesOrderDetail\] AS SOD ON
-\[P\].\[ProductID\] = \[SOD\].\[ProductID\]
-
-GROUP BY \[P\].\[ProductID\], \[P\].\[Name\]
-
-ORDER BY TotalQuantitySold DESC;
-
-GO
-
-/\* Create View that will be used in the SQL GraphQL Endpoint \*/
-
-CREATE VIEW SupplyChain.vProductsbySuppliers AS
-
-SELECT COUNT(a.ProductID) AS ProductCount
-
-, a.SupplierLocationID
-
-, b.CompanyName
-
-FROM SupplyChain.Warehouse AS a
-
-INNER JOIN dbo.Suppliers AS b ON a.SupplierID = b.SupplierID
-
-GROUP BY a.SupplierLocationID, b.CompanyName;
-
-GO
-
-![](./media/image30.png)
-
-3.  You can select the ellipses (...) next to the name under the Object
-    View to duplicate, rename, or delete it.
-
-4.  ![](./media/image31.png)The desired results will be displayed based
-    on the query.
 
 ### **Task-2: Performance Monitoring in SQL database in Fabric**
 
@@ -362,13 +285,25 @@ use the Performance Dashboard to view database performance metrics, to
 identify performance bottlenecks, and find solutions to performance
 issues.
 
-- ![](./media/image32.png)On the **Home** toolbar in the Query with the
-  SQL query editor, select **Performance summary**.
+1.  On the **Home** toolbar in the Query with the SQL query editor,
+    select **Performance summary**.
 
-- The entire performance summary is displayed such as CPU consumption,
-  Allocated size, User connections etc.
+     ![](./media/image31.png)
 
-![](./media/image33.png)
+2.  The entire performance summary is displayed such as CPU consumption,
+    Allocated size, User connections etc.
+
+    ![](./media/image32.png)
+
+3.  To check the performance of Automatic Indexing, click on **View
+    More** in the Automatic Index section.
+
+    ![](./media/image33.png)
+
+4.  In the Fabric portal, the **Automatic Index** tab shows a history
+    and status of automatically created indexes
+
+     ![](./media/image34.png)
 
 ### **Task-3: Backups in SQL database in Fabric** 
 
@@ -376,62 +311,27 @@ SQL database in Fabric automatically takes backups for you, and you can
 see these backups in the properties that you access through the database
 view of the Fabric portal.
 
-1.  Open your database view in the Fabric portal and select the Settings
-    icon in the toolbar.
+1.  Click on the **Database editor**
 
-![](./media/image34.png)
+    ![](./media/image35.png)
 
-2.  Select the **Restore points** page. This view shows the recent point
+2.  Select the **Settings** icon in the toolbar.
+
+    ![](./media/image36.png)
+
+3.  Select the **Restore points** page. This view shows the recent point
     in time backups that have been taken on your database.
 
-![](./media/image35.png)
+     ![](./media/image37.png)
 
-### **Task-4: Security in SQL database in Fabric** 
+4.  Click on the Close
 
-You'll now grant access to another account in your organization and then
-control their database securables using Schemas.
+    ![](./media/image38.png)
 
-1.  ![](./media/image36.png)From your Fabric Workspace, select the
-    context menu (...) of the SQL database, then select **Share** from
-    the menu.
+5.  Now, click on **Supply Chain Analytics Workspace** on the left-sided
+    navigation menu.
 
-2.  Enter a contact name from your organization to receive the sharing
-    invitation notification and Select **Grant**.
-
-> You don't need to grant any further permissions in this area – sharing
-> the database to the account gives the sharing contact access to
-> connect.
->
-> ![](./media/image37.png)
-
-3.  ![](./media/image38.png)Open the SQL database by selecting on it in
-    the workspace view.
-
-4.  Select **Security** in the menu bar of the database view.
-    Select **Manage SQL security** in the ribbon.
-
-![](./media/image39.png)
-
-5.  ![](./media/image40.png)In this panel, you can select a current
-    database role to add accounts to it. Select the **+ New role** item.
-
-6.  ![](./media/image41.png)Name the
-    role **supply_chain_readexecute_access** and then select
-    the SalesLT and SupplyChain schemas. De-select all checkboxes
-    except **Select** and **Execute**. Select **Save**.
-
-7.  In the **Manage SQL security** panel, select the radio-box next to
-    the new role, and select **Manage access** in the menu.
-
-![](./media/image42.png)
-
-8.  ![](./media/image43.png)Enter the name of the account in your
-    organization you shared the database to and select
-    the **Add** button, and then select **Save**.
-
-You can allow the account to view data and run stored procedures in the
-database with the combination of: the Share action, and granting the
-role both SELECT and EXECUTE permissions on the two schemas.
+     ![](./media/image39.png)
 
 ## Exercise 5 – Use the SQL analytics endpoint to query data 
 
@@ -441,93 +341,75 @@ You can query any of the mirrored data in the SQL analytics endpoint
 using standard Transact-SQL statements that are compatible with a Fabric
 warehouse. 
 
-1.  ![](./media/image44.png)You can access the SQL analytics endpoint in
-    the **database view**.
+1.  You can access this mirrored data by selecting the SQL analytics
+    endpoint in your Workspace view.
 
-2.  In this step, create a view over the mirrored data, and then create
+    ![](./media/image40.png)
+
+     ![](./media/image41.png)
+
+2.  On the **WideWorldImporters** page, go to the **Home** tab,
+    select **SQL** from the drop down, and click on **New SQL query**.
+
+      ![](./media/image42.png)
+     
+      ![](./media/image43.png)
+
+3.  In this step, create a view over the mirrored data, and then create
     a report to show the results.
 
-> ![](./media/image45.png)Ensure you're in the SQL analytics endpoint,
-> and then open a new Query window using the icon bar that depicts a
-> paper with the letters **SQL** and paste the following Transact-SQL
-> Code and select **Run** to execute it.
+    Ensure you're in the SQL analytics endpoint, and then open a new Query
+    window using the icon bar that depicts a paper with the
+    letters **SQL** and paste the following Transact-SQL Code and
+    select **Run** to execute it.
 
-CREATE VIEW SupplyChain.vProductsBySupplier AS
+     **SQL**
+    ```
+    CREATE VIEW SupplyChain.vProductsBySupplier AS
+    -- View for total products  each supplier
+    SELECT sod.ProductID
+    , sup.CompanyName
+    , SUM(sod.OrderQty) AS TotalOrderQty
+    FROM SalesLT.SalesOrderHeader AS soh
+    INNER JOIN SalesLT.SalesOrderDetail AS sod 
+        ON soh.SalesOrderID = sod.SalesOrderID
+        INNER JOIN SupplyChain.Warehouse AS sc 
+            ON sod.ProductID = sc.ProductID
+            INNER JOIN dbo.Suppliers AS sup 
+                ON sc.SupplierID = sup.SupplierID
+    GROUP BY sup.CompanyName, sod.ProductID;
+    GO
+    CREATE VIEW SupplyChain.vSalesByDate AS
+    -- Product Sales by date and month
+    SELECT YEAR(OrderDate) AS SalesYear
+    , MONTH(OrderDate) AS SalesMonth
+    , ProductID
+    , SUM(OrderQty) AS TotalQuantity
+    FROM SalesLT.SalesOrderDetail AS SOD
+    INNER JOIN SalesLT.SalesOrderHeader AS SOH 
+        ON SOD.SalesOrderID = SOH.SalesOrderID
+    GROUP BY YEAR(OrderDate), MONTH(OrderDate), ProductID;
+    GO
+    CREATE VIEW SupplyChain.vTotalProductsByVendorLocation AS
+    -- View for total products by each supplier by location
+    SELECT wh.SupplierLocationID AS 'Location'
+    , vpbs.CompanyName AS 'Supplier'
+    , SUM(vpbs.TotalOrderQty) AS 'TotalQuantityPurchased'
+    FROM SupplyChain.vProductsBySupplier AS vpbs
+    INNER JOIN SupplyChain.Warehouse AS wh
+        ON vpbs.ProductID = wh.ProductID
+    GROUP BY wh.SupplierLocationID, vpbs.CompanyName;
+    GO   
+    ```
+   ![](./media/image44.png)
+ 
+   ![](./media/image45.png)
 
--- View for total products by each supplier
-
-SELECT sod.ProductID
-
-, sup.CompanyName
-
-, SUM(sod.OrderQty) AS TotalOrderQty
-
-FROM SalesLT.SalesOrderHeader AS soh
-
-INNER JOIN SalesLT.SalesOrderDetail AS sod
-
-ON soh.SalesOrderID = sod.SalesOrderID
-
-INNER JOIN SupplyChain.Warehouse AS sc
-
-ON sod.ProductID = sc.ProductID
-
-INNER JOIN dbo.Suppliers AS sup
-
-ON sc.SupplierID = sup.SupplierID
-
-GROUP BY sup.CompanyName, sod.ProductID;
-
-GO
-
-CREATE VIEW SupplyChain.vSalesByDate AS
-
--- Product Sales by date and month
-
-SELECT YEAR(OrderDate) AS SalesYear
-
-, MONTH(OrderDate) AS SalesMonth
-
-, ProductID
-
-, SUM(OrderQty) AS TotalQuantity
-
-FROM SalesLT.SalesOrderDetail AS SOD
-
-INNER JOIN SalesLT.SalesOrderHeader AS SOH
-
-ON SOD.SalesOrderID = SOH.SalesOrderID
-
-GROUP BY YEAR(OrderDate), MONTH(OrderDate), ProductID;
-
-GO
-
-CREATE VIEW SupplyChain.vTotalProductsByVendorLocation AS
-
--- View for total products by each supplier by location
-
-SELECT wh.SupplierLocationID AS 'Location'
-
-, vpbs.CompanyName AS 'Supplier'
-
-, SUM(vpbs.TotalOrderQty) AS 'TotalQuantityPurchased'
-
-FROM SupplyChain.vProductsBySupplier AS vpbs
-
-INNER JOIN SupplyChain.Warehouse AS wh
-
-ON vpbs.ProductID = wh.ProductID
-
-GROUP BY wh.SupplierLocationID, vpbs.CompanyName;
-
-GO
-
-**SQL**
-
-3.  ![](./media/image46.png)This T-SQL query creates three new SQL
-    views,
+4.  This T-SQL query creates three new SQL views,
     named **SupplyChain.vProductsBySupplier**, **SupplyChain.vSalesByDate**,
-    and **SupplyChain.vTotalProductsByVendorLocation**.
+    and **SupplyChain.vTotalProductsByVendorLocation**
+
+     ![](./media/image46.png)
 
 You can now use these views in analytics and reporting. You will create
 a report using these views in the further steps.
@@ -536,21 +418,29 @@ a report using these views in the further steps.
 
 ### **Task-1: Find the connection strings to the SQL database.**
 
-1.  To get your server and database name, open your SQL database in
+1.  Click on **supply_chain_analytics_database** database in the
+    left-sided navigation bar.
+
+     ![](./media/image47.png)
+
+2.  To get your server and database name, open your SQL database in
     Fabric portal view and select the **Settings** button in the icon
     bar.
 
-![](./media/image47.png)
+    ![](./media/image48.png)
 
-2.  ![](./media/image48.png)Select **Connection Strings** and you'll see
-    a long string that starts with **Data Source...** From there, select
-    the text between the characters **tcp:** through the
-    characters **,1433**. Ensure that you select the entire set of
-    characters there and nothing more for the server name.
+3.  Select **Connection Strings** and you'll see a long string that
+    starts with **Data Source...** From there, select the text between
+    the characters **tcp:** through the characters **,1433**. Ensure
+    that you select the entire set of characters there and nothing more
+    for the server name.
 
-3.  ![](./media/image49.png)For the database name, select all the
-    characters between the characters **Initial
-    Catalog=** and **;MultipleActiveResultSets**.
+     ![](./media/image49.png)
+
+4.  For the database name, select all the characters between the
+    characters **Initial Catalog=** and **;MultipleActiveResultSets**.
+
+     ![](./media/image50.png)
 
 You can now use these SQL strings in your connection area for tools such
 as Power BI or SQL Server Management Studio. For Visual Studio Code with
@@ -567,218 +457,304 @@ the system takes might not be as you desire, so you'll now change one
 portion of the data model for this SQL analytics endpoint to have a
 specific outcome.
 
-1.  ![](./media/image50.png)In your SQL analytics endpoint view, select
-    the **Model layouts** button in the ribbon.
+1.  Click on **supply_chain_analytics_database** SQL analytics endpoint
+    in the left-sided navigation bar.
 
-2.  From the resulting view, zoom in and scroll over until you see
+     ![](./media/image51.png)
+
+2.  In your SQL analytics endpoint view, select the **Model
+    layouts** button in the ribbon.
+
+    ![](./media/image52.png)
+ 
+     ![](./media/image53.png)
+
+3.  From the resulting view, zoom in and scroll over until you see
     the **vTotalProductsByVendorLocation** object. Select it.
 
-![](./media/image51.png)
+     ![](./media/image54.png)
 
-3.  ![](./media/image52.png)In the properties, select
-    the **Location** field, and expand the **Advanced** properties
-    section. You might need to scroll to find it. Set the value
-    of **Summarize by** to **None**. This ensures that when the field is
-    used, it's a discrete number, not a mathematical summarization of
-    that number.
+4.  In the properties, select the **Location** field, and expand
+    the **Advanced** properties section. You might need to scroll to
+    find it. Set the value of **Summarize by** to **None**. This ensures
+    that when the field is used, it's a discrete number, not a
+    mathematical summarization of that number.
+
+     ![](./media/image55.png)
 
 ### **Task-3: Create a report**
 
 Here, the task is to create a report based on the views you created in
 the SQL analytics endpoint in previous steps.
 
-1.  ![](./media/image53.png)Inside the SQL analytics endpoint view,
-    select the **Reporting** button in the menu bar and then the **New
+1.  Inside the SQL analytics endpoint view, select
+    the **Reporting** button in the menu bar and then the **New
     report** button in the ribbon.
 
-2.  ![](./media/image54.png)From the **New report with all available
-    data** that appears, select the **Continue** button.
+     ![](./media/image56.png)
 
-3.  The Power BI canvas appears, and you're presented with the option to
-    use the Copilot to create your report. Feel free to explore what
-    Copilot can come up with. For the rest of this tutorial, we'll
-    create a new report with objects from earlier steps.
+2.  From the **New report with all available data** that appears, select
+    the **Continue** button.
 
-![](./media/image55.png)
+    ![](./media/image57.png)
+ 
+    ![](./media/image58.png)
 
-4.  ![](./media/image56.png)Expand the **vTotalProductsByVendor** data
-    object. Select each of the fields you see there. The report takes a
-    moment to gather the results to a text view. You can size this text
-    box if desired.
+3.  Now the Power BI canvas appears
+    ![](./media/image59.png)
+
+4.  Expand the **vTotalProductsByVendor **data object. Select each of
+    the fields you see there. The report takes a moment to gather the
+    results to a text view. You can size this text box if desired.
+
+      ![](./media/image60.png)
+ 
+     ![](./media/image61.png)
 
 5.  Select in a blank area of the report canvas, and then
     select **Location** in the **Data** fields area.
 
-![](./media/image57.png)
+    ![](./media/image62.png)
+ 
+     ![](./media/image63.png)
 
-6.  ![](./media/image58.png)Select a value in the box you just created –
-    notice how the first selection of values follows the selection you
-    make in the second box. Select that same value again to clear the
-    selection.
+6.  Select a value in the box you just created – notice how the first
+    selection of values follows the selection you make in the second
+    box. Select that same value again to clear the selection.
 
-7.  ![](./media/image59.png)Select in a blank area of the reporting
-    canvas, and then select the **Supplier** field.
+     ![](./media/image64.png)
 
-8.  ![](./media/image60.png)Once again, you can select the name of a
-    supplier and the first selection shows the results of just that
-    supplier.
+7.  Select in a blank area of the reporting canvas, and then select
+    the **Supplier** field.
+
+    ![](./media/image65.png)
+ 
+    ![](./media/image66.png)
+
+8.  Once again, you can select the name of a supplier and the first
+    selection shows the results of just that supplier.
+
+     ![](./media/image67.png)
 
 ### **Task-4: Save the Power BI item for sharing** 
 
 You can save and share your report with other people in your
 organization.
 
-1.  ![](./media/image61.png)Select the **Save** button in the icon box.
+1.  Select the **Save** button in the icon box.
 
-2.  ![](./media/image62.png)Name the
-    report **suppliers_by_location_report**, and ensure you select the
-    correct Workspace for this tutorial.
+     ![](./media/image68.png)
+
+2.  Name the report +++**suppliers_by_location_report**+++ and ensure
+    you select the correct Workspace for this tutorial. Select **Save**
+    button
+
+    ![](./media/image69.png)
+ 
+    ![](./media/image70.png)
 
 3.  Select the **Share** button in the icon bar to share the report with
     people in your organization who have access to the proper data
     elements.
 
-![](./media/image63.png)
+      ![](./media/image71.png)
+
+4.  Enter the user +++sample user1+++, which you created in Use Case 1,
+    and select **Send** button.
+
+     ![](./media/image72.png)
+   
+     ![](./media/image73.png)
 
 ## Exercise 7 – Perform data analysis using Microsoft Fabric Notebooks
 
 ### **Task-1: Data analysis with T-SQL notebooks**
 
-1.  Navigate to the Workspace you created for this tutorial from the
-    Home of your Microsoft Fabric portal. Select the **New Item** button
-    in the tool bar.
+1.  Click on **Supply Chain Analytics Workspace** workspace in the
+    left-sided navigation bar.
 
-> ![](./media/image64.png)
+    ![](./media/image74.png)
 
-2.  Select **All items** and scroll until you see a **Notebook** item.
-    Select that item to create a new Notebook.
+2.  In the **Fabric** page, select **+New item**. Then, select
+    **Notebook** tile.
 
-![](./media/image65.png)
+    ![](./media/image75.png)
 
-3.  ![](./media/image66.png)In the icon bar, change the environment
-    from **PySpark (Python)** to **T-SQL**.
+3.  In the icon bar, change the environment from **PySpark
+    (Python)** to **T-SQL**.
+
+     ![](./media/image76.png)
 
 4.  In each code cell, there is a drop-down list for the code language.
     In the first cell in the Notebook, change the code language
     from **PySpark (Python)** to **T-SQL**.
 
-![](./media/image67.png)
+     ![](./media/image77.png)
 
-5.  ![](./media/image68.png)In the Notebook **Explorer**, select
-    the **Warehouses** item.
+5.  Select the **+ Warehouses** button.
 
-6.  ![](./media/image69.png)Select the **+ Warehouses** button.
+     ![](./media/image78.png)
 
-7.  ![](./media/image70.png)Select the **SQL analytics endpoint** object
-    that is named supply_chain_analytics_database, with the same name of
-    the object you created earlier in this tutorial. Select **Confirm**.
+6.  Select the **SQL analytics endpoint** object that is named
+    **supply_chain_analytics_database**. Select **Confirm**.
 
-8.  ![](./media/image71.png)Expand the database, expand **Schemas**.
-    Expand the **SupplyChain** schema. Expand **Views**, and locate the
-    SQL view named **vProductsBySupplier**.
+    ![](./media/image79.png)
 
-9.  Select the ellipses next to that view. and select the option that
-    says SELECT TOP 100.
+    ![](./media/image80.png)
 
-![](./media/image72.png)
+7.  Expand the database, expand **Schemas**. Expand
+    the **SupplyChain** schema. Expand **Views**, and locate the SQL
+    view named **vProductsBySupplier**.
 
-10. ![](./media/image73.png)This creates a cell with T-SQL code that has
-    the statements pre-populated for you. Select the **Run Cell** button
-    for the cell to run the query and return the results.
+    ![](./media/image81.png)
 
-11. ![](./media/image74.png)In the results, you can see not only the
-    data requested, but buttons that allow you to view charts, save the
-    data as another table, download, and more. To the side of the
-    results you can see a new pane with quick inspection of the data
-    elements, showing minimum and maximum values, missing data, and
-    unique counts of the data returned.
+8.  Select the ellipses next to that view. and select the option that
+    says **SELECT TOP 100**.
 
-12. ![](./media/image75.png)Hovering between the code cells shows you a
-    menu to add another cell. Select the **+ Markdown** button
+     ![](./media/image82.png)
 
-13. ![](./media/image76.png)This places a text-based field where you can
-    add information. Styling for the text is available in the icon bar,
-    or you can select the \</\> button to work with Markdown directly.
-    The result of the formatting show as a preview of the formatted
-    text.
+9.  This creates a cell with T-SQL code that has the statements
+    pre-populated for you. Select the **Run Cell** button for the cell
+    to run the query and return the results.
+
+     ![](./media/image83.png)
+ 
+     ![](./media/image84.png)
+
+10. In the results, you can see not only the data requested, but buttons
+    that allow you to view charts, save the data as another table,
+    download, and more.
+    ![](./media/image85.png)
+
+11. To the side of the results you can see a new pane with quick
+    **inspection** of the data elements, showing minimum and maximum
+    values, missing data, and unique counts of the data returned.
+
+    ![](./media/image86.png)
+ 
+    ![](./media/image87.png)
+
+12. Hovering between the code cells shows you a menu to add another
+    cell. Select the **+ Markdown** button.
+
+     ![](./media/image88.png)
+ 
+      ![](./media/image89.png)
+
+13. This places a text-based field where you can add information.
+    Styling for the text is available in the icon bar, or you can select
+    the \</\> button to work with Markdown directly. The result of the
+    formatting show as a preview of the formatted text.
+
+    ![](./media/image90.png)
+    ![](./media/image9189.png)
 
 14. Select the **Save As** icon in the ribbon.
 
-![](./media/image77.png)
+     ![](./media/image92.png)
 
-15. Enter the text** products_by_suppliers_notebook**. Ensure you set
-    the location to your Workspace. Select the **Save** button to save
-    the notebook.
+15. Enter the text **+++products_by_suppliers_notebook+++**. Ensure you set
+    the location to your tutorial Workspace. Select the **Save** button
+    to save the notebook.
 
-![](./media/image78.png)
+     ![](./media/image93.png)
+ 
+     ![](./media/image94.png)
 
-## Exercise 8 – Setup and Configure the GraphQL API
+## Exercise 8: Setup and Configure the GraphQL API
 
 To create the API for GraphQL that you'll use for an application:
 
-1.  ![A screenshot of a computer Description automatically
-    generated](./media/image79.png)Open the tutorial database portal.
-    Select the **New** button and select **API for GraphQL**.
+1.  Click on **Supply Chain Analytics Workspace** workspace in the
+    left-sided navigation bar.
 
-2.  ![A screenshot of a computer Description automatically
-    generated](./media/image80.png)Enter the
-    text **supplier_impact_gql** for the **Name** for your item and
-    select **Create**.
+     ![](./media/image74.png)
 
-3.  ![A screenshot of a computer Description automatically
-    generated](./media/image81.png)Select **data source** card displayed
-    to add the data for GraphQL.
+2.  In the **Fabric** page, select **+New item**. Then, select **API for
+    GraphQL** tile.
 
-4.  ![A screenshot of a computer Description automatically
-    generated](./media/image82.png)In the **Choose connectivity**
-    option, you can select **Connect to fabric data sources with single
-    sign-on (SSO) authentication** option and click on OK.
+      ![](./media/image95.png)
 
-5.  ![A screenshot of a computer Description automatically
-    generated](./media/image83.png)On the **Choose the data you want to
-    connect** page, Select the database
-    **supply_chain_analytics_database** and click on Connect.
+3.  Enter the text **supplier_impact_gql** for the **Name** for your
+    item and select **Create**.
 
-6.  You are presented with a **Choose Data** panel. Scroll until you
-    find ***SupplyChain.vProductsBySuppliers***, the [view you created
-    earlier in this
-    tutorial](https://learn.microsoft.com/en-us/fabric/database/sql/tutorial-query-database).
-    Select it and click on **Load** button.
+     ![](./media/image96.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image84.png)
+4.  Select **data source** card displayed to add the data for GraphQL.
 
-7.  In the Query1 panel, replace the text you see there with the
+     ![](./media/image97.png)
+
+5.  On **Choose connectivity option** dialog box, select **Connect to
+    Fabric data sources with single-on (SSo) authentication** and click
+    on **Ok** button.
+
+     ![](./media/image98.png)
+
+6.  In the OneLake catalog tab, select the
+    **supply_chain_analytics_database** and click on the '**Connect'**
+    button
+
+      ![](./media/image99.png)
+
+7.  You are presented with a **Choose Data** panel. Scroll until you
+    find ***SupplyChain.vProductsBySuppliers***, the view you created
+    earlier in this tutorial Select it and click on **Load** button.
+
+      ![](./media/image100.png)
+
+8.  In the Query1 panel, replace the text you see there with the
     following GraphQL query string:
 
-> query { vProductsbySuppliers(filter: { SupplierLocationID: { eq: 7 }
-> }) { items { CompanyName SupplierLocationID ProductCount } } }
->
-> Select the Run button in the Query1 window. The results of the GraphQL
-> query are returned to the Results window in JSON format.
+  +++query { vProductsbySuppliers(filter: { SupplierLocationID: { eq: 7 } }) { items { CompanyName SupplierLocationID ProductCount } } }+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image85.png)
+9.  Select the **Run **button in the Query1 window. The results of the
+    GraphQL query are returned to the Results window in JSON format.
 
-8.  ![A screenshot of a computer Description automatically
-    generated](./media/image86.png)Select the **Copy**
-    **endpoint** button in the ribbon.
+  ![](./media/image101.png)
+ 
+   ![](./media/image102.png)
 
-9.  Select the **Copy button** when the Copy link panel appears. Store
+10. Select the **Copy** **endpoint** button in the ribbon.
+
+    ![](./media/image103.png)
+
+11. Select the **Copy button** when the Copy link panel appears. Store
     this string in a notepad or other location to be used in the sample
     application for this tutorial.
 
-![A screenshot of a link Description automatically
-generated](./media/image87.png)
-
+     ![](./media/image104.png)
+      ![](./media/image105.png)
 **Your API for GraphQL is now ready to accept connections and
 requests. **
 
-## Conclusion
+## Exercise 9 – Clean up resources
 
-In summary, this tutorial offers a hands-on introduction to using SQL
-within Microsoft Fabric. It guides you through creating and querying
-databases, ingesting sample data, and performing data analysis using
-T-SQL and Fabric Notebooks. By exploring practical examples, you gain
-foundational skills to manage and analyze data effectively in the Fabric
-environment.
+1.  In the left navigation bar, select the icon for your workspace to
+    view all of the items it contains.
+
+    ![](./media/image106.png)
+
+2. In the menu on the top toolbar, select **Workspace settings**.
+
+    ![](./media/image107.png)
+
+3. In the **General** section, select **Remove this workspace**.
+
+    ![](./media/image108.png)
+    
+    ![](./media/image109.png)
+
+**Summary**
+
+This usecase provides a comprehensive, hands-on guide to building a
+Supply Chain Disruption Response App using Microsoft Fabric's SQL
+database features. It walks users through creating a workspace, setting
+up a SQL database, ingesting sample and external data, and performing
+data transformations. Users also learn to create analytical views,
+monitor performance, and visualize data using Power BI. The tutorial
+concludes with the setup of a GraphQL API for application integration
+and guidance on cleaning up resources. By completing this tutorial,
+users gain practical experience in managing and analyzing supply chain
+data within a unified analytics environment.
+
+
