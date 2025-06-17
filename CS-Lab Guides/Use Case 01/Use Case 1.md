@@ -1,5 +1,4 @@
-**Use Case 01 – Build SQL database in Microsoft Fabric to query, report,
-and share the data**
+## Use Case 01 – Build SQL database in Microsoft Fabric to query, report, and share the data
 
 **Introduction**
 
