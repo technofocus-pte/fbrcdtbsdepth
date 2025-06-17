@@ -42,10 +42,7 @@ real-world data scenarios.
 
 ## Exercise 1 – Set up your environment
 
-### **Task-1: Sign-In to Microsoft Fabric*
-
-Follow these steps to start your Fabric capacity trial and become the
-Capacity administrator of that trial.
+### **Task-1: Sign-In to Microsoft Fabric**
 
 1.  Open your browser and browse the **Microsoft Fabric**
     +++https://app.fabric.microsoft.com/+++
@@ -56,7 +53,7 @@ Capacity administrator of that trial.
     ![A close up of a white and green object AI-generated content may be
     incorrect.](./media/image1.png)
 
-3.  Then, In the **Microsoft** window enter the password and click on
+3.  Then, In the **Microsoft** window, enter the password and click on
     the **Sign in** button 
 
     ![A login screen with a red box and blue text AI-generated content may
@@ -67,8 +64,7 @@ Capacity administrator of that trial.
     ![A computer screen shot of a computer error AI-generated content may
     be incorrect.](./media/image3.png)
 
-5.  On **Fabric Home** page, click on the **Account manager** on the
-    right side.
+5. You'll be navigated to the Microsoft Fabric Home Page.
 
     ![](./media/image4.png)
 
@@ -81,7 +77,7 @@ roles for the workspace to create a SQL database.
 
 To create a workspace:
 
-1.  In the **Fabric** home page, select **+New workspace**.
+1.  In the **Fabric** home page, select **+ New workspace**.
 
     ![](./media/image5.png)
 
@@ -90,7 +86,7 @@ To create a workspace:
 
     |   |    |
     |-----|-----|
-    |Name|	+++SQLDatabaseXX+++(XX can be a unique number)|
+    |Name|	+++SQLDatabaseXX+++ (XX can be a unique number)|
     |Advanced	|Under License mode, select Trial|
 
     ![](./media/image6.png)
