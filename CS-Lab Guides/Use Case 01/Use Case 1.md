@@ -42,7 +42,7 @@ real-world data scenarios.
 
 ## Exercise 1 – Set up your environment
 
-### **Task-1: Start a Fabric Capacity Trial**
+### **Task-1: Sign-In to Microsoft Fabric*
 
 Follow these steps to start your Fabric capacity trial and become the
 Capacity administrator of that trial.
