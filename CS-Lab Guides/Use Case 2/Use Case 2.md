@@ -604,22 +604,6 @@ organization.
     ![A screenshot of a computer AI-generated content may be
     incorrect.](./media/image73.png)
 
-3.  Select the **Share** button in the icon bar to share the report with
-    people in your organization who have access to the proper data
-    elements.
-
-    ![A screenshot of a computer Description automatically
-    generated](./media/image74.png)
-
-4.  Enter the user +++sample user1+++, which you created in Use Case 1,
-    and select **Send** button.
-
-    ![A screenshot of a computer Description automatically
-    generated](./media/image75.png)
-
-    ![A screenshot of a computer Description automatically
-    generated](./media/image76.png)
-
 ## Exercise 7 – Perform data analysis using Microsoft Fabric Notebooks
 
 ### **Task-1: Data analysis with T-SQL notebooks**
