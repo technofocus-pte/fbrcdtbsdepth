@@ -95,28 +95,7 @@ To create a workspace:
     ![A screenshot of a computer AI-generated content may be
     incorrect.](./media/image8.png)
 
-## Exercise 2 – Enable SQL Database in your Fabric 
-
-### **Task-1: Enable SQL database for your tenant**
-
-Follow these steps to enable SQL database for your tenant.
-
-1.  Go to **settings** option in Fabric and select **Admin portal**.
-
-    ![](./media/image9.png)
-
-2.  Enable the **Users can create Fabric items** switch and click on
-    **Apply**. 
-
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image10.png)
-
-3.  Enable **SQL database (preview)** switch and click on Apply.
-
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image11.png)
-
-## Exercise 3 – Create a SQL Database in the Fabric Portal
+## Exercise 2 – Create a SQL Database in the Fabric Portal
 
 1.  In the Fabric Portal, click on **+ New Item**, search for **SQL
     databases**, and select **SQL database (preview) tile**
@@ -152,7 +131,7 @@ Follow these steps to enable SQL database for your tenant.
 
     ![](./media/image15.png)
 
-## Exercise 4 - Load AdventureWorks sample data in your SQL database in Microsoft Fabric
+## Exercise 3 - Load AdventureWorks sample data in your SQL database in Microsoft Fabric
 
 1.  Once the new database is created, open the database's home page.
     Select **Sample Data**.
@@ -190,7 +169,7 @@ Follow these steps to enable SQL database for your tenant.
 
     ![](./media/image22.png)
 
-## Exercise 5 – Create a table in SQL Database in Fabric
+## Exercise 4 – Create a table in SQL Database in Fabric
 
 ### **Task-1: Create a table with T-SQL Queries**
 
@@ -292,7 +271,7 @@ Follow these steps to enable SQL database for your tenant.
     ![A screenshot of a computer Description automatically
     generated](./media/image30.png)
 
-## Exercise 6 – Query the SQL Analytics Endpoint of your SQL Database in Fabric
+## Exercise 5 – Query the SQL Analytics Endpoint of your SQL Database in Fabric
 
 ### **Task-1: Query the SQL Analytics Endpoint**
 
@@ -360,7 +339,7 @@ Follow these steps to enable SQL database for your tenant.
 
     ![](./media/image42.png)
 
-## Exercise 7 – Create GraphQL API from your SQL Database
+## Exercise 6 – Create GraphQL API from your SQL Database
 
 To create an API for GraphQL:
 
@@ -431,7 +410,7 @@ Your API for GraphQL is now ready to accept connections and requests.
 You can use the API editor to test and prototype GraphQL queries and the
 Schema explorer to verify the data types and fields exposed in the API.
 
-## Exercise 8: Create simple reports on your SQL database in Power BI
+## Exercise 7: Create simple reports on your SQL database in Power BI
 
 1.  Open your browser, navigate to the address bar, and type or paste
     the following URL:
