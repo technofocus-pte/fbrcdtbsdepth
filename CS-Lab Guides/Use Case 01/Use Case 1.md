@@ -88,9 +88,9 @@ To create a workspace:
     |Name|	+++SQLDatabaseXX+++ (XX can be a unique number)|
     |Advanced	|Under License mode, select Trial|
 
-    ![](./media/image6.png)
+    ![](./media/image80.png)
 
-    ![](./media/image7.png)
+    ![](./media/image81.png)
 
     ![A screenshot of a computer AI-generated content may be
     incorrect.](./media/image8.png)
