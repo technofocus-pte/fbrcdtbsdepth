@@ -55,13 +55,10 @@ To create a workspace:
     |Name|	+++Supply Chain Analytics WorkspaceXX+++(XX can be a unique number)|
     |Advanced	|Under License mode, select Trial|
 
-    ![](./media/image2.png)
+    ![](./media/image158.png)
 
     ![A screenshot of a screenshot of a computer AI-generated content may
-    be incorrect.](./media/image3.png)
-
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image4.png)
+    be incorrect.](./media/image159.png)
 
 ## Exercise 2 – Create a SQL Database in Microsoft Fabric 
 
