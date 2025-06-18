@@ -53,7 +53,7 @@ To create a workspace:
     |   |   |
     |---|---|
     |Name|	+++Supply Chain Analytics WorkspaceXX+++(XX can be a unique number)|
-    |Advanced	|Under License mode, select Trial|
+    |Advanced	|Under License mode, select **fabric capacity**|
 
     ![](./media/image158.png)
 
