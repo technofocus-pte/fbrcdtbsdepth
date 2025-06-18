@@ -431,24 +431,158 @@ Your API for GraphQL is now ready to accept connections and requests.
 You can use the API editor to test and prototype GraphQL queries and the
 Schema explorer to verify the data types and fields exposed in the API.
 
+## Exercise 8: Create simple reports on your SQL database in Power BI
+
+1.  Open your browser, navigate to the address bar, and type or paste
+    the following URL:
+    +++https://powerbi.microsoft.com/en-us/desktop/+++ , then press
+    the **Enter** button.
+
+2.  Click on the **Download now** button.
+
+    ![A person smiling for a picture AI-generated content may be
+    incorrect.](./media/image53.png)
+
+3.  In case, **This site is trying to open Microsoft Store** dialog box
+    appears, then click on **Open** button.
+
+    ![A screenshot of a computer AI-generated content may be
+    incorrect.](./media/image54.png)
+
+4.  Under **Power BI Desktop**, click on the **Get** button.
+
+    ![A screenshot of a computer AI-generated content may be
+    incorrect.](./media/image55.png)
+
+5.  Now, click on the **Open** button.
+
+    ![A screenshot of a computer AI-generated content may be
+    incorrect.](./media/image56.png)
+
+6.  Enter your **given** credentials and click on the **Next** button.
+
+    ![A screenshot of a computer AI-generated content may be
+    incorrect.](./media/image57.png)
+
+7.  Enter the **Administrative password** from the **Resources** tab and
+    click on the **Sign in** button.
+
+    ![A screenshot of a login screen AI-generated content may be
+    incorrect.](./media/image58.png)
+
+8.  In the **Home** tab, select the **OneLake catalog**
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image59.png)
+
+9.  In the **OneLake catalog** tab, select **SQL database** and click on
+    **Connect** button
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image60.png)
+
+10. Enter your tenant credentials and click on the **Next** button.
+
+    ![A screenshot of a computer AI-generated content may be
+    incorrect.](./media/image61.png)
+
+11. Enter the **password** from the **Resources** tab and click on
+    the **Sign in** button.
+
+    ![A screenshot of a login box AI-generated content may be
+    incorrect.](./media/image62.png)
+
+12. In the Navigator page, under **Display Options**, select the desired
+    tables in your SQL database, then click on the **Load** button.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image63.png)
+
+13. Choose **DirectQuery** and click on Ok button
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image64.png)
+
+    ![A screenshot of a computer AI-generated content may be
+    incorrect.](./media/image65.png)
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image66.png)
+
+14. In the **Power BI** page, under **Visualizations**, click on
+    the **Table** icon 
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image67.png)
+
+15. On the **Data** pane, expand the **SalesLT Customer table** and
+    select the **columns for Company Name, Email Address, and First
+    Name.**
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image68.png)
+
+16. In the **Power BI** page, under **Visualizations**, click on
+    the **Clustered** **Column chart** icon to add a **Column chart** to
+    your report
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image69.png)
+
+17. On the **Data** pane, expand **SalesLT SalesOrderDetail**  and check
+    the box next to **OrderQty**. This creates a column chart and adds
+    the field to the **X-axis**.
+
+18. Check the box next to **UnitPrice**. This adds the field to
+    the **Y-axis**.
+
+19. Check the box next to **UnitPriceDiscount**. This adds the field to
+    the **Legend**.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image70.png)
+
+20. Click on the **Publish** in the command bar.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image71.png)
+
+21. In **Microsoft Power BI Desktop** dialog box, click on
+    the **Save** button.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image72.png)
+
+22. In **Publish to Power BI** dialog box, select the database. Then,
+    click on the **Select** button.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image73.png)
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image74.png)
+
+You now have a Power BI report of your SQL database data. Review the
+reports for accuracy.
+
 ### **Clean up resources**
 
 1.  In the left navigation bar, select the icon for your workspace to
     view all of the items it contains.
 
-    ![](./media/image53.png)
+    ![](./media/image75.png)
 
 2.  In the menu on the top toolbar, select **Workspace settings**.
 
-    ![](./media/image54.png)
+    ![](./media/image76.png)
 
 3.  In the **General** section, select **Remove this workspace**.
 
-    ![](./media/image55.png)
+    ![](./media/image77.png)
 
-    ![](./media/image56.png)
+    ![](./media/image78.png)
 
-    ![](./media/image57.png)
+    ![](./media/image79.png)
 
 ## Summary
 
