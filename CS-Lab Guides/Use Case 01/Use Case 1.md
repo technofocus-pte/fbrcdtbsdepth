@@ -86,7 +86,7 @@ To create a workspace:
     |   |    |
     |-----|-----|
     |Name|	+++SQLDatabaseXX+++ (XX can be a unique number)|
-    |Advanced	|Under License mode, select Trial|
+    |Advanced	|Under License mode, select **fabric capacity**|
 
     ![](./media/image80.png)
 
