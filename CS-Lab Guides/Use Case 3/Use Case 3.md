@@ -1145,7 +1145,7 @@ DB, and then use that data to build a personalization model.
 
     +++SELECT TOP 10 * FROM dbo.FactSales order by CreatedAt desc;+++
  
-    +++SELECT TOP 10 * FROM dbo.FactSalesLineItem order by CreatedAt desc;+++
+    +++SELECT TOP 10 * FROM dbo.FactSalesLineItems order by CreatedAt desc;+++
  
     ![A screenshot of a computer Description automatically
     generated](./media/image127.png)
