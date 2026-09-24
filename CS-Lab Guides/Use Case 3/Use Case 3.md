@@ -917,7 +917,7 @@ DB, and then use that data to build a personalization model.
 
     CREATE OR ALTER VIEW dbo.vDimMenuItemKey AS
     SELECT menuItemId AS MenuItemId, menuItemKey AS MenuItemKey, isActive AS IsActive
-    FROM dbo.DimMenu;
+    FROM dbo.DimMenuItem;
 
     CREATE OR ALTER VIEW dbo.vFactSalesMaxKey AS 
     SELECT
